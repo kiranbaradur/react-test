@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDom from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// CSS
+import "./index.css";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// setup
+const author = "John Doe";
+const title = "I love you to the Moon and Back";
+const img =
+    "data:image/png;base64,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";
+function BookList() {
+    return (
+        <section className="booklist">
+            <Book job="developer" />
+            <Book title="random title" number={22} />
+        </section>
+    );
+}
+const Book = (props) => {
+    return (
+        <article className="book">
+            <img src={img} alt="" />
+            <h1>{title}</h1>
+            <h4>{author}</h4>
+            <p>{props.job}</p>
+            <p>{props.title}</p>
+        </article>
+    );
+};
+
+ReactDom.render(<BookList />, document.getElementById("root"));
